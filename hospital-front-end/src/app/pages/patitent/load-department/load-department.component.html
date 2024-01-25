@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-action-list>
+        
+    <h1>Available  Departments</h1>
+    <mat-divider></mat-divider>
+
+    <button [routerLink]="'/department/'+ c.cid" mat-list-item *ngFor="let c of categories">
+        <mat-icon mat-list-icon>category</mat-icon>
+        {{c.title}}
+    </button>
+    </mat-action-list>
+</mat-card>
+
+<!-- {{categories|json}} -->

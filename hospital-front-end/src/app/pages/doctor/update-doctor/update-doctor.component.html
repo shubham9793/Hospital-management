@@ -1,0 +1,79 @@
+<mat-card>
+    <h1>Add New Doctot</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form *ngIf="doctor" (ngSubmit)="updateDoctor()">   
+                    <!-- FirstName field -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Doctor's doctorFirstName -->
+                            <mat-form-field class="w100" appearance="fill">
+                                <mat-label>Enter First Name</mat-label>
+                                <input [(ngModel)]="doctor.doctorFirstName"
+                                    name="doctorFirstName" type="text" required="*" placeholder="Enter here" matInput>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-6">
+                            <!-- doctor last Name -->
+                            <mat-form-field class="w100" appearance="fill">
+                                <mat-label>Enter Last Name </mat-label>
+                                <input [(ngModel)]="doctor.doctorLastName"
+                                   required="*" name="doctorLastName" type="text" placeholder="Enter here" matInput>
+                            </mat-form-field>                            
+                        </div>
+                    </div>
+
+                    <!-- Title Field -->
+                    <mat-form-field class="w100" appearance="fill">
+                        <mat-label>Enter speciality </mat-label>
+                        <input [(ngModel)]="doctor.specialist" 
+                            required="*" type="text" name="specialist" placeholder="Enter here" matInput>
+                    </mat-form-field> <br>
+
+                    <mat-form-field class="w100" appearance="fill">
+                        <mat-label>Enter description </mat-label>
+                        <textarea [(ngModel)]="doctor.description" 
+                            required="*" type="text" name="description" placeholder="Enter here" row="10" matInput> </textarea>
+                    </mat-form-field> 
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Doctor's Fee -->
+                            <mat-form-field class="w100" appearance="fill">
+                                <mat-label>Doctor's Fee</mat-label>
+                                <input [(ngModel)]="doctor.fee"
+                                    name="fee" type="text" required="*" placeholder="Enter here" matInput>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-6">
+                            <!-- No. of Appointment -->
+                            <mat-form-field class="w100" appearance="fill">
+                                <mat-label>No. of Appointment</mat-label>
+                                <input [(ngModel)]="doctor.numberOfAppointment"
+                                    name="numberOfAppointment" type="text" placeholder="Enter here" matInput>
+                            </mat-form-field>                            
+                        </div>
+                    </div>
+
+                    <!-- Choose Department -->
+                    <mat-form-field appearance="fill" class="w100 mt20">
+                        <mat-label>Choose Department</mat-label>
+                        <mat-select [(ngModel)]="doctor.category.cid" name="category"  required="*"  >
+                          <mat-option *ngFor="let c of categories" [value]="c.cid">
+                            {{c.title}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <div class="container text-center">
+                        <button type="submit" mat-raised-button color="primary">Update Details</button>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</mat-card>

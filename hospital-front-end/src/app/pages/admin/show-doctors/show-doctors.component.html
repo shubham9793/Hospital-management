@@ -1,0 +1,35 @@
+<mat-card class="mt10 mr20,ml20" *ngFor="let d of doctors">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+
+        <mat-card-title>
+            {{d.doctorFirstName}} {{d.doctorLastName}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{d.category.title}}
+        </mat-card-subtitle>
+    </mat-card-header>
+
+        <mat-card-content>
+        {{d.description}}
+        </mat-card-content>
+<mat-card-actions>
+    <button [routerLink]="'/admin/load-appointments/'+ d.doctorId" mat-raised-button color="primary">Booked Appointment</button>
+
+    <button mat-stroked-button color="primary" class="ml20">Fee: {{d.fee}}</button>
+
+    <button mat-stroked-button color="primary" class="ml20">No. Of Appointment: {{d.numberOfAppointment}}</button>
+
+    <button mat-stroked-button color="primary" class="ml20">specialist: {{d.specialist}}</button>
+         
+    <button [routerLink]="'/admin/update-doctor/'+ d.doctorId" mat-flat-button color="primary" class="ml20">Update</button>
+
+    <button  (click)="deleteDoctorData(d.doctorId)" class="ml20" mat-flat-button color="accent">Delete</button>
+
+</mat-card-actions>
+
+</mat-card>
+
+<div class="container text-center mt20">
+    <button  routerLink='/admin/add-doctor' mat-raised-button color="accent">Add new doctor</button>
+</div>

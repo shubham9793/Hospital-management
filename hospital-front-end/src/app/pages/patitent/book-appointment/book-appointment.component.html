@@ -1,0 +1,140 @@
+<mat-card>
+  <!-- {{appointment|json}} -->
+  <br />
+  <br />
+  <!-- {{user|json}} -->
+  <h1>Book Your Appointment</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form (submit)="bookAppointment()">
+          <!-- FirstName field -->
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Doctor's doctorFirstName -->
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Enter First Name</mat-label>
+                <input
+                  [(ngModel)]="appointment.firstname"
+                  name="firstname"
+                  type="text"
+                  required="*"
+                  placeholder="Enter here"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+              <!-- doctor last Name -->
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Enter Last Name </mat-label>
+                <input
+                  [(ngModel)]="appointment.lastname"
+                  required="*"
+                  name="lastname"
+                  type="text"
+                  placeholder="Enter here"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Patient Problem -->
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Problem Description</mat-label>
+            <textarea
+              [(ngModel)]="appointment.patientProblem"
+              required="*"
+              type="text"
+              name="description"
+              placeholder="Enter here"
+              row="10"
+              matInput
+            >
+            </textarea>
+          </mat-form-field>
+
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Enter Phone Number </mat-label>
+            <input
+              [(ngModel)]="appointment.phone"
+              required="*"
+              name="doctorLastName"
+              type="text"
+              placeholder="Enter here"
+              matInput
+            />
+          </mat-form-field>
+
+          <!-- space for set start and end time and date  -->
+
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Appointment Date -->
+              <!-- <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input
+                  [(ngModel)]="appointment.startDate"
+                  name="start"
+                  required="*"
+                  matInput
+                  [matDatepicker]="picker"/>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker">
+                  <mat-icon matDatepickerToggleIcon
+                    >keyboard_arrow_down</mat-icon
+                  >
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field> -->
+
+              <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [(ngModel)]="appointment.startDate" name="startDate" required="*" placeholder="DD/MM/YYYY"
+                [matDatepicker]="picker"
+                (ngModelChange)="oncheckExistingDate($event)"
+                >
+                
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <!-- Appointment Time -->
+              <mat-form-field>
+                <mat-label>Time</mat-label>
+                <input 
+
+                  matInput
+                  aria-label="default time"
+                  [ngxTimepicker]="defaultValue"
+                  [value]="'0:00 am'"
+                  [(ngModel)]="appointment.appTime" 
+                  name="appTime"
+                  (ngModelChange)="oncheckExistingTime($event)"
+                  required="*"
+                />
+                <ngx-material-timepicker #defaultValue>
+                </ngx-material-timepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="container text-center">
+            <input
+              type="hidden"
+              name="userId"
+              [(ngModel)]="appointment.userId"
+            />
+            <button type="submit" mat-raised-button color="primary">
+              Book Appointment
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-card>

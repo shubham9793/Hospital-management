@@ -1,0 +1,58 @@
+<mat-card>
+    <mat-action-list>
+        <div mat-subheader>Menu</div>
+
+        <!-- <button mat-list-item [routerLink]="'/patient/profile'">
+            <mat-icon mat-list-icon>account_circle </mat-icon>Profile
+        </button> -->
+
+        <button mat-list-item routerLink="/patient/show-appointments/:${userId}">
+            <mat-icon mat-list-icon>folder</mat-icon>All Appointments
+        </button>
+
+
+
+        <button mat-list-item routerLink="/patient/0">
+            <mat-icon mat-list-icon>folder</mat-icon>All Doctors
+        </button>
+
+        <button [routerLink]="'/patient/'+c.cid" mat-list-item *ngFor="let c of categories">
+            <mat-icon mat-list-icon>arrow_right_alt</mat-icon>{{c.title}}
+        </button>
+
+
+
+        <button mat-list-item (click)="logout()">
+            <mat-icon mat-list-icon>logout</mat-icon>Logout
+        </button>
+
+
+    </mat-action-list>
+</mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <button mat-list-item routerLink="/patient/booked-appointment">
+    <mat-icon mat-list-icon>folder</mat-icon>Booked Appointment
+</button> -->
+
+
+
+<!-- <button mat-list-item routerLink="/patient/departments" ><mat-icon mat-list-icon> category </mat-icon> Department
+        </button> -->
+
+<!-- <button mat-list-item routerLink="/patient/profile">
+            
+            <mat-icon mat-list-icon>account_circle </mat-icon>Profile
+        </button> -->

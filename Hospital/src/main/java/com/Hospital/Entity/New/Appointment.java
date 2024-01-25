@@ -1,0 +1,127 @@
+package com.Hospital.Entity.New;
+
+
+
+import java.time.LocalDateTime;
+
+import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
+public class Appointment {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long appointmentId;
+	
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = ISO.DATE_TIME)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
+	private LocalDateTime start;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm", iso = ISO.DATE_TIME)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
+	private LocalDateTime end;
+	private String patientProblem;
+	
+	
+	 @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+	 private  Doctor doctor;
+	
+	
+	
+	public Appointment() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	
+
+
+	public Appointment(Long appointmentId, LocalDateTime start, LocalDateTime end, String patientProblem,
+			Doctor doctor) {
+		super();
+		this.appointmentId = appointmentId;
+		this.start = start;
+		this.end = end;
+		this.patientProblem = patientProblem;
+		this.doctor = doctor;
+	}
+
+
+
+
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+
+
+
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+
+
+
+
+
+	public Long getAppointmentId() {
+		return appointmentId;
+	}
+
+
+	public void setAppointmentId(Long appointmentId) {
+		this.appointmentId = appointmentId;
+	}
+
+
+	
+
+
+	public LocalDateTime getStart() {
+		return start;
+	}
+
+
+	public void setStart(LocalDateTime start) {
+		this.start = start;
+	}
+
+
+	public LocalDateTime getEnd() {
+		return end;
+	}
+
+
+	public void setEnd(LocalDateTime end) {
+		this.end = end;
+	}
+
+
+	public String getPatientProblem() {
+		return patientProblem;
+	}
+
+
+	public void setPatientProblem(String patientProblem) {
+		this.patientProblem = patientProblem;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Appointment [appointmentId=" + appointmentId + ", start=" + start + ", end=" + end + ", patientProblem=" + patientProblem + "]";
+	}
+	
+	
+	
+
+}

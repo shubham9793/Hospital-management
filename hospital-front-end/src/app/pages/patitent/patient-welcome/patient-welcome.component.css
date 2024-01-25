@@ -1,0 +1,21 @@
+section {
+    display: flex;
+    align-items: center;
+  }
+  
+  img {
+    height: 200px;
+    margin-right: 20px;
+  }
+  
+  h2 {
+    font-size: 2em;
+    margin: 0;
+  }
+  
+  p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin: 0;
+  }
+  

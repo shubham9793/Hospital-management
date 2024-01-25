@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-action-list>
+        <div mat-subheader>Menu</div>
+        <button mat-list-item routerLink="/doctor">
+            <mat-icon mat-list-icon>home </mat-icon>Home
+        </button>
+
+        <button mat-list-item routerLink="/doctor/profile">
+            <mat-icon mat-list-icon>account_circle </mat-icon>Profile
+        </button>
+
+        <button mat-list-item routerLink="/doctor/categories">
+            <mat-icon mat-list-icon>list</mat-icon>Departments
+        </button>
+
+        <!-- <button mat-list-item routerLink="/doctor/add-categories">
+            <mat-icon mat-list-icon>account_circle </mat-icon>Add  Department
+        </button> -->
+
+        <button mat-list-item routerLink="/doctor/doctors">
+            <mat-icon mat-list-icon>folder</mat-icon>All Doctors
+        </button>
+
+        <!-- <button mat-list-item routerLink="/doctor/add-doctor">
+            <mat-icon mat-list-icon>queue</mat-icon>Add New Doctor
+        </button> -->
+
+        <button mat-list-item (click)="logout()" >
+            <mat-icon mat-list-icon>logout</mat-icon>Logout
+        </button>
+        
+    </mat-action-list>
+</mat-card>

@@ -1,0 +1,41 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <h1>Available Doctors</h1>
+        <div class="row" *ngIf="doctors">
+            <div class="col-md-6" *ngFor="let d of doctors">
+               <mat-card class="mb20  text-center">
+                   <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{d.doctorFirstName}} {{d.doctorLastName}}</mat-card-title>
+                    <mat-card-subtitle>
+                        {{d.category.title}}
+                    </mat-card-subtitle>
+                   </mat-card-header>
+                   <mat-card-content>
+                    <p class="truncate">{{d.description}}</p>
+                   </mat-card-content>
+                   <mat-card-actions class="text-center ml20">
+                    <button mat-raised-button color="primary"  [routerLink]="'/patient/show-appointments/' + d.userId" >View</button>
+                    
+                    <!-- [routerLink]="'/patient/show-appointment/'+ d.doctorId +'/'+d.userId" >View</button> -->
+
+                    <button  mat-button color="accent" class="ml20">Appointments:{{d.numberOfAppointment}}</button> <br>
+                    <button  mat-button color="primary"  class="ml20" >Fee:{{d.fee}} </button> <br>
+                    <button  mat-raised-button color="accent" [routerLink]="'/patient/book-appointment/'+ d.doctorId" class="ml20" >Book </button>
+                    
+                  </mat-card-actions>
+               </mat-card>
+            </div>
+            <mat-card>
+                <div class="mat-md-12" *ngIf="doctors.length==0">
+                    <div class="mat-card">
+                        <mat-card-content>
+                            <h1>There is no doctor in this category.</h1>
+                        </mat-card-content>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
+

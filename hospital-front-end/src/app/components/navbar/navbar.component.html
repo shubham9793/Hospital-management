@@ -1,0 +1,91 @@
+<mat-toolbar color="primary">
+    <a routerLink="/" mat-icon-button class="example-icon  "  aria-label="Example icon-button with menu icon">
+        <mat-icon>home</mat-icon>
+    </a>
+
+    <span style="font-size: 80%;">Home</span>
+    <span class="example-spacer"></span>
+
+    <a *ngIf="!isUserActive"
+        [routerLink]="'/login'"  style="font-size: 80%;"
+        mat-icon-button class="example-icon mr20" 
+        aria-label="Example icon-button with heart icon">
+        Login
+    </a>
+
+
+
+    <a  *ngIf="!isUserActive"
+        [routerLink] ="'/signup'" style="font-size: 80%;"
+        mat-icon-button class="example-icon mr20" 
+        aria-label="Example icon-button with share icon">
+      Register
+    </a>
+
+    <a  (click)="logout()"
+        *ngIf="isUserActive"
+         style="font-size: 70%;"
+        mat-icon-button class="example-icon mr20" 
+        aria-label="Example icon-button with share icon">
+      Logout
+    </a>
+
+    <!-- routerLink="/doctor/profile" -->
+    <!-- Here you can use routerLink="/admin/profile" link to nevigate current user profile in after
+        clicling on navbar's user name  -->
+    <button  *ngIf="isUserActive && user"
+         style="font-size: 70%;"
+        mat-icon-button class="example-icon mr80" 
+       
+        aria-label="Example icon-button with share icon">
+        {{user.username}}
+    
+    </button> 
+  </mat-toolbar>
+
+  <!-- <mat-toolbar color="primary">
+    <a routerLink="/" mat-icon-button 
+        class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu_book</mat-icon>
+    </a>
+
+    <span style="font-size: 80%;">Home</span>
+    <span class="example-spacer"></span>
+
+    <a *ngIf="!isUserActive"
+        routerLink="/login"  
+        style="font-size: 80%;"
+        mat-icon-button class="example-icon favorite-icon"
+        aria-label="Example icon-button with heart icon">
+        Login
+    </a>
+    <a *ngIf="!isUserActive" 
+        style="font-size: 80%;" 
+        routerLink="/signup" 
+        mat-icon-button class="example-icon mr10 ml20"
+        aria-label="Example icon-button with share icon">
+        Register
+    </a>
+  
+  
+    <a  (click)="logout()" 
+        *ngIf="isUserActive" 
+        style="font-size: 70%;"
+        routerLink="/signup" 
+        mat-icon-button class="example-icon  mr20"
+        aria-label="Example icon-button with share icon">
+        Logout
+    </a>
+  
+    <button *ngIf="isUserActive && user"
+             style="font-size: 80%;"
+             class="example-icon ml20"
+             mat-button
+             routerLink="/admin/profile"
+             aria-label="Example icon-button with share icon">
+  
+            {{user.username}}
+    </button>
+  
+  
+  </mat-toolbar> -->
