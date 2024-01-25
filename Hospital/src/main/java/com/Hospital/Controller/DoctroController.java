@@ -1,11 +1,14 @@
 package com.Hospital.Controller;
 
+import com.Hospital.Entity.New.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.Hospital.Entity.New.Doctor;
 import com.Hospital.services.DoctorService;
+
+import java.util.List;
 
 @RequestMapping("/doctor")
 @RestController
@@ -53,5 +56,13 @@ public class DoctroController {
     @CrossOrigin("*")
     public void deleteDoctor(@PathVariable Long doctorId) {
         this.doctorService.deleteDoctor(doctorId);
+    }
+
+
+    @GetMapping("/category/{cid}")
+    public List<Doctor> getDoctorsOfCategory(@PathVariable("cid") Long cid) {
+        Category category = new Category();
+        category.setCid(cid);
+        return this.doctorService.getDoctorsOfCategory(category);
     }
 }

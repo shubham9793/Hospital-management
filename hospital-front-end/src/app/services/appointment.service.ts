@@ -12,11 +12,10 @@ export class AppointmentService {
 
   // Get All Appointments
   public getAllAppointments() {
-    return this.http.get(`${baseUrl}/appointment/`);
+    return this.http.get(`${baseUrl}/appointment/book-appointment`);
   }
 
   // Get Single Appointment
-
   public getSingleAppointment(appointmentId: any) {
     return this.http.get(`${baseUrl}/appointment/${appointmentId}`);
   }

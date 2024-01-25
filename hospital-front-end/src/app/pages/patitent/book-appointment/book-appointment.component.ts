@@ -50,12 +50,15 @@ export class BookAppointmentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.doctorId = this.route.snapshot.params['doctorId'];
-     this.appointment.userId = this.route.snapshot.params['userId']; 
-    this.user = sessionStorage.getItem('user');
+    //this.doctorId = this.route.snapshot.params['doctorId'];
+    this.appointment.userId = this.route.snapshot.params['userId'];
+    this.user = localStorage.getItem('user');
     this.user = JSON.parse(this.user);
 
-    //this.appointment.userId = this.user.id;
+    this.appointment.userId = this.user.id;
+
+    console.log(this.appointment.userId);
+    console.log(this.user);
     // this.appointment.userId;
     // Load Doctor Id from the Doctor entity
     this.appointment.doctor['doctorId'] = this.doctorId;

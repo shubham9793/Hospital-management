@@ -1,8 +1,10 @@
 package com.Hospital.Service.Impl;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
+import com.Hospital.Entity.New.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,12 +55,21 @@ public class DoctorServiceImpl implements DoctorService {
 
     }
 
+
+
     // Get Single Doctor
 
     @Override
     public Doctor getDoctor(Long doctorId) {
         // TODO Auto-generated method stub
         return this.doctorRepository.findById(doctorId).get();
+    }
+
+
+    @Override
+    public List<Doctor> getDoctorsOfCategory(Category category) {
+        return this.doctorRepository.findBycategory(category);
+
     }
 
 

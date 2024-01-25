@@ -1,8 +1,11 @@
 package com.Hospital.services;
 
+import java.util.List;
 import java.util.Set;
 
+import com.Hospital.Entity.New.Category;
 import com.Hospital.Entity.New.Doctor;
+import org.springframework.http.ResponseEntity;
 
 public interface DoctorService {
 	
@@ -22,7 +25,7 @@ public interface DoctorService {
 	
 	// Delete Doctor
 	public void deleteDoctor(Long doctorId);
-	
-	
 
+
+	public List<Doctor> getDoctorsOfCategory(Category category);
 }

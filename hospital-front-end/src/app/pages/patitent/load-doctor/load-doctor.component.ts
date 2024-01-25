@@ -7,22 +7,19 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-load-doctor',
   templateUrl: './load-doctor.component.html',
-  styleUrls: ['./load-doctor.component.css']
+  styleUrls: ['./load-doctor.component.css'],
 })
 export class LoadDoctorComponent implements OnInit {
+  constructor(
+    private route: ActivatedRoute,
+    private doctorService: DoctorService,
+    private snack: MatSnackBar
+  ) {}
 
-  constructor(private route:ActivatedRoute,
-    private doctorService:DoctorService,
-    private snack:MatSnackBar
-
-    ){}
-  
-    catId:any;
-    doctors:any;
-  
+  catId: any;
+  doctors: any;
 
   ngOnInit(): void {
-
     // this.catId = this.route.snapshot.params['catId'];
 
     // console.log(this.catId);
@@ -42,35 +39,34 @@ export class LoadDoctorComponent implements OnInit {
     //   console.log("Load specific data")
     // }
 
-    this.route.params.subscribe((params)=>{
+    this.route.params.subscribe((params) => {
       this.catId = params['catId'];
-      if(this.catId == 0){
-        console.log("load all the dept.")
-  
+      if (this.catId == 0) {
+        console.log('load all the dept.');
+
         this.doctorService.getAllDoctors().subscribe(
-          (data:any)=>{
+          (data: any) => {
             this.doctors = data;
             console.log(this.doctors);
           },
-          (error) =>{
+          (error) => {
             console.log(error);
-            Swal.fire("Error in Lodading Data !",'Ok')
+            Swal.fire('Error in Lodading Data !', 'Ok');
           }
-        )
-      }else{
-        console.log("Load specific data")
+        );
+      } else {
+        console.log('Load specific data');
         this.doctorService.getDoctorsOfCategory(this.catId).subscribe(
-          (data)=>{
-            this.doctors=data;
+          (data) => {
+            this.doctors = data;
+            console.log(data);
           },
-          (error)=>{
+          (error) => {
             console.log(error);
-            Swal.fire("Error in Lodading Data !",'Ok')
+            Swal.fire('Error in Lodading Data !', 'Ok');
           }
-        )
+        );
       }
-    })
-    
+    });
   }
 }
-

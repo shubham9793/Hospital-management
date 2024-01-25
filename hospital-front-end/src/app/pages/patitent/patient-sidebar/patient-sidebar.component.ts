@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./patient-sidebar.component.css'],
 })
 export class PatientSidebarComponent implements OnInit {
+userId: any;
   constructor(
     private route: ActivatedRoute,
     private categoryService: CategoryService,
