@@ -56,6 +56,7 @@ import { AddDepartmentComponent } from './pages/admin/add-department/add-departm
 import { UpdateDoctorsDetailsComponent } from './pages/admin/update-doctors-details/update-doctors-details.component';
 import { ShowDoctorsAppointmentComponent } from './pages/admin/show-doctors-appointment/show-doctors-appointment.component';
 import { ShowDoctorsComponent } from './pages/admin/show-doctors/show-doctors.component';
+import { LoadAllAppointmentComponent } from './pages/Receptionist/load-all-appointment/load-all-appointment.component';
 
 
 //import { EncrDecrService } from './services/encr-decr.service';
@@ -94,6 +95,7 @@ import { ShowDoctorsComponent } from './pages/admin/show-doctors/show-doctors.co
     UpdateDoctorsDetailsComponent,
     ShowDoctorsAppointmentComponent,
     ShowDoctorsComponent,
+    LoadAllAppointmentComponent,
     
 
     

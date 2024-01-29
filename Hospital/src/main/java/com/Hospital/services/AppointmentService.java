@@ -1,6 +1,7 @@
 package com.Hospital.services;
 
 
+import java.util.List;
 import java.util.Set;
 
 import com.Hospital.Entity.New.Appointment;
@@ -32,6 +33,9 @@ public interface AppointmentService {
 	
 	// Get Appointment of any Doctor
 	public Set<Appointment> getAppointmentOfDoctor(Doctor doctor);
+
+
+	public List<Appointment> getAppointmentsByUserId(Long userId);
 	
 
 }

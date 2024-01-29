@@ -2,6 +2,7 @@ package com.Hospital.Service.Impl;
 
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public Appointment bookAppintment(Appointment appointment) {
         // TODO Auto-generated method stub
+        System.out.println("Received Appointment: " + appointment);
         return this.appointmentRepository.save(appointment);
 
 
@@ -74,6 +76,11 @@ public class AppointmentServiceImpl implements AppointmentService {
         // TODO Auto-generated method stub
 
         return this.appointmentRepository.findByDoctor(doctor);
+    }
+
+    @Override
+    public List<Appointment> getAppointmentsByUserId(Long userId) {
+        return appointmentRepository.findByUserId(userId);
     }
 
 

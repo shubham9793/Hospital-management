@@ -82,9 +82,16 @@ public class AppointmentController {
 
     // Delete Appointment
     @DeleteMapping("/{appointmentId}")
-
     public void deleteAppointment(@PathVariable("appointmentId") Long appointmentId) {
         this.appointmentService.deleteAppointment(appointmentId);
+    }
+
+
+    // find appointment by userId
+    @GetMapping("/apt/{userId}")
+    public ResponseEntity<?> getAppointmentsByUserId(@PathVariable("userId") Long userId) {
+        List<Appointment> appointments = appointmentService.getAppointmentsByUserId(userId);
+        return ResponseEntity.ok(appointments);
     }
 
 }

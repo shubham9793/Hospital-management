@@ -12,7 +12,7 @@ export class AppointmentService {
 
   // Get All Appointments
   public getAllAppointments() {
-    return this.http.get(`${baseUrl}/appointment/book-appointment`);
+    return this.http.get(`${baseUrl}/appointment/`);
   }
 
   // Get Single Appointment
@@ -22,7 +22,6 @@ export class AppointmentService {
 
   // Add Appointments
   public addAppointment(appointment: any) {
-    console.log('this is new appo : ' + appointment);
     return this.http.post(
       `${baseUrl}/appointment/book-appointment`,
       appointment
@@ -41,13 +40,12 @@ export class AppointmentService {
 
   // Get Appointment of doctor
 
-  public getAppointmentofDoctors(doctorid: any) {
-    return this.http.get(`${baseUrl}/appointment/doctor/${doctorid}`);
+  public getAppointmentofDoctors(doctorId: any) {
+    return this.http.get(`${baseUrl}/appointment/doctor/${doctorId}`);
   }
 
   // Get Appointment by UserId
   public getAppointmentByUserId(userId: any) {
-    console.log(userId);
     return this.http.get(`${baseUrl}/appointment/apt/${userId}`);
   }
 }

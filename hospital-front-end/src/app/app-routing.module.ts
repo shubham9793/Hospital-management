@@ -29,6 +29,7 @@ import { AdminGuard } from './services/admin.guard';
 import { DoctorGuard } from './services/doctor.guard';
 import { PatientGuard } from './services/patient.guard';
 import { ReceptionistGuard } from './services/receptionist.guard';
+import { LoadAllAppointmentComponent } from './pages/Receptionist/load-all-appointment/load-all-appointment.component';
 
 // Createing router link
 const routes: Routes = [
@@ -141,6 +142,14 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: 'doctors',
+        component: ViewDoctorsComponent,
+      },
+      {
+        path: 'appointments',
+        component: LoadAllAppointmentComponent,
       },
     ],
   },

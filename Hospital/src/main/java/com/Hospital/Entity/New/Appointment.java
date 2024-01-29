@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.Hospital.Entity.User;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
@@ -37,7 +38,9 @@ public class Appointment {
 	 @ManyToOne(fetch = FetchType.EAGER)
 	 private  Doctor doctor;
 
-    
+	 private Long userId;
+
+
 	public Appointment() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -48,13 +51,14 @@ public class Appointment {
 
 
 	public Appointment(Long appointmentId, LocalDateTime start, LocalDateTime end, String patientProblem,
-			Doctor doctor,Long UserId) {
+			Doctor doctor,Long userId) {
 		super();
 		this.appointmentId = appointmentId;
 		this.start = start;
 		this.end = end;
 		this.patientProblem = patientProblem;
 		this.doctor = doctor;
+		this.userId = userId;
 	}
 
 
@@ -81,9 +85,17 @@ public class Appointment {
 		return appointmentId;
 	}
 
+	public Long getUserId() {
+		return userId;
+	}
+
 
 	public void setAppointmentId(Long appointmentId) {
 		this.appointmentId = appointmentId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 
@@ -108,6 +120,8 @@ public class Appointment {
 	public void setEnd(LocalDateTime end) {
 		this.end = end;
 	}
+
+
 
 
 	public String getPatientProblem() {

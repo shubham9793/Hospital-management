@@ -22,8 +22,8 @@ export class BookAppointmentComponent implements OnInit {
   user: any;
   // start => StartDate
   // end => EndDate
-  //start: any;
-  //end:any;
+  start: any;
+  end: any;
 
   doctorId: any;
 
@@ -50,47 +50,44 @@ export class BookAppointmentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //this.doctorId = this.route.snapshot.params['doctorId'];
-    this.appointment.userId = this.route.snapshot.params['userId'];
+    this.doctorId = this.route.snapshot.params['doctorId'];
     this.user = localStorage.getItem('user');
     this.user = JSON.parse(this.user);
 
+    //set the userId to the appoinment
     this.appointment.userId = this.user.id;
 
-    console.log(this.appointment.userId);
-    console.log(this.user);
-    // this.appointment.userId;
-    // Load Doctor Id from the Doctor entity
+    // //set the doctorId to the appoinment
     this.appointment.doctor['doctorId'] = this.doctorId;
   }
 
   // Get current date on OnClick
   public oncheckExistingDate(currentDate: string) {
+    var existApp: number = 0;
     this.currDate = this.datePipe.transform(currentDate, 'yyyy-MM-dd');
     console.log(' current date  => ' + this.currDate);
     console.log('Type of current date  => ' + typeof this.currDate);
-    // this.appointmentService.getAppointmentofDoctors(this.doctorId).subscribe(
-    //   (data:any)=>{
-    //       data.map((item:any)=>{
-    //         if(currentDate == item.startDate ) {
-    //            existApp = 1;
-    //         }
-    //         console.log("type of existing date "+item.startDate + typeof(item.startDate))
-    //       });
-    //       //console.log('updated'+existApp);
-    //   },
-    //   (error) =>{
-    //     console.log(error);
-    //   }
-    // )
-    // }
+    this.appointmentService.getAppointmentofDoctors(this.doctorId).subscribe(
+      (data: any) => {
+        data.map((item: any) => {
+          if (currentDate == item.startDate) {
+            existApp = 1;
+          }
+          console.log(
+            'type of existing date ' + item.startDate + typeof item.startDate
+          );
+        });
+        //console.log('updated'+existApp);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   // Get current time and Check the existing Date&Time on OnClick
   public oncheckExistingTime(currentTime: any) {
     var existApp: number = 0;
-    console.log('default is ' + existApp);
-    console.log(this.currDate);
     this.appointmentService.getAppointmentofDoctors(this.doctorId).subscribe(
       (data: any) => {
         data.map((item: any) => {
@@ -104,14 +101,7 @@ export class BookAppointmentComponent implements OnInit {
           ) {
             existApp = 1;
           }
-          console.log(
-            'type of existing date => ' +
-              item.startDate +
-              ' =>' +
-              typeof item.startDate
-          );
         });
-        console.log('updated is ' + existApp);
 
         if (existApp === 1) {
           alert('Appointment Already Exist on this Date&Time,Choose Another!');
@@ -126,8 +116,12 @@ export class BookAppointmentComponent implements OnInit {
 
   // Calling Server
   public bookAppointment() {
-    // this.appointment.appTime = this.pipedate.transform(this.appointment.startDate , 'dd/mm/yyyy')
-    //console.log(this.appointment.startDate );
+    this.appointment.appTime = this.datePipe.transform(
+      this.appointment.startDate,
+      'yyyy-MM-dd'
+    );
+    console.log(this.appointment.startDate);
+    console.log(this.appointment.startDate);
     console.log(typeof this.appointment.appTime);
     // return false;
 
@@ -185,10 +179,10 @@ export class BookAppointmentComponent implements OnInit {
       return;
     }
 
+    this.appointment.userId = this.user.id;
     this.appointmentService.addAppointment(this.appointment).subscribe(
       (data: any) => {
         Swal.fire('Success !', 'Appointment Booked !', 'success');
-        console.log(this.appointment.startDate);
         this.appointment = {
           firstname: '', //this.user.firstname,
           lastname: '', //this.user.lastname,
@@ -196,6 +190,7 @@ export class BookAppointmentComponent implements OnInit {
           phone: '', //this.user.phone,
           startDate: '',
           appTime: '',
+          userId: '',
         };
         console.log(data);
       },

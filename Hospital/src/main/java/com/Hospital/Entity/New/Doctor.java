@@ -36,6 +36,8 @@ public class Doctor {
 	 @OneToMany(mappedBy = "doctor",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	 @JsonIgnore
 	 private Set<Appointment> appointment = new HashSet<>();
+
+
 	
 	
 	

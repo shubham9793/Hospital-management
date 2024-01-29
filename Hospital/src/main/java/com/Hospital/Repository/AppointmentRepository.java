@@ -1,5 +1,6 @@
 package com.Hospital.Repository;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,4 +14,6 @@ import com.Hospital.Entity.New.Doctor;
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
     Set<Appointment> findByDoctor(Doctor doctor);
+
+    List<Appointment> findByUserId(Long userId);
 }
